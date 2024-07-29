@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+// 관리자 도서신청 목록
+
 @WebServlet("/book/applyStatusList")
 public class AdminApplyListServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -33,7 +35,7 @@ public class AdminApplyListServlet extends HttpServlet {
         if (nowPage != null) {
             ab.setNowPage(Integer.parseInt(nowPage));
         }
-        // 전체 목록 개수 -> 페이징바 구성
+        
         ab.setTotalData(new ApplyBookDao().selectBoardCount(ab, title));
 
         List<Map<String,String>> list = new ApplyBookDao().selectApplyList(ab, title);
