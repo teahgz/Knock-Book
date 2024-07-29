@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 //관리자 도서 목록
+
 @WebServlet("/book/list")
 public class BookListServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
