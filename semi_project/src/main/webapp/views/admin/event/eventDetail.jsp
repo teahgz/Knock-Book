@@ -285,7 +285,6 @@
                     <img src="<%= request.getContextPath() %>/upload/event/<%= event.getNew_image() %>" alt="새 이미지" class="event-image">
                 </div>
  
-                <!-- 수정, 삭제 버튼 --> 
                    <button class="btn btn-outline-danger" onclick="deleteEvent(<%= event.getEvent_no() %>)">삭제</button> 
                    <button class="btn btn-outline-primary" onclick="location.href='/event/update?eventNo=<%= event.getEvent_no() %>&eventType=<%= event.getEv_form() %>'">수정</button>
                  <a href="/event/list" class="btn btn-outline-primary" id="eventListPageBtn">목록</a>
@@ -313,7 +312,7 @@
                        <tbody> 
                            <% 
                                List<Map<String, String>> list = (List<Map<String, String>>) request.getAttribute("parUserList"); 
-                               int pageSize = 10; // 한 페이지에 표시할 항목 수
+                               int pageSize = 10; 
                                int nowPage = request.getParameter("nowPage") == null ? 1 : Integer.parseInt(request.getParameter("nowPage"));
                                int startNo = (nowPage - 1) * pageSize + 1;
                                for (int i = 0; i < list.size(); i++) {
@@ -369,7 +368,8 @@
            </div> 
       </main>
        <% } %> 
-<!-- 댓글 컨테이너 -->
+       
+<!-- 댓글  -->
    <section class="replyContainer">
        <% Integer replyCnt = (Integer) request.getAttribute("admReplyCnt"); %>
        <div id="replyCount">댓글 수 : <%= (replyCnt != null ? replyCnt : 0) %></div><br>
