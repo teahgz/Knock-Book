@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+// 관리자 도서 신청 ( 상태 확인 후 )
+
 @WebServlet("/book/applyStatusEnd")
 public class ApplyStatusEndServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -28,7 +30,6 @@ public class ApplyStatusEndServlet extends HttpServlet {
 
         PrintWriter writer = response.getWriter();
         if (result > 0) {
-            // 성공 시 alert 창 띄우고 리디렉션
             writer.println("<script>alert('도서 상태가 변경되었습니다.'); location.href='/book/applyStatusList';</script>");
         } else {
             writer.println("<script>alert('오류가 발생했습니다.'); location.href='/book/applyStatusList';</script>");
