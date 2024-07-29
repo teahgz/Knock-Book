@@ -19,17 +19,13 @@ public class CreateBookServlet extends HttpServlet {
 
     }
 
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher view = request.getRequestDispatcher("/views/admin/book/book_request.jsp");
         view.forward(request, response);
     }
 
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         doGet(request, response);
-
 
     }
 
