@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.book.admin.book.dao.BookDao;
 import com.book.admin.book.vo.Book;
 
-
+// 관리자 도서 목록
 
 @WebServlet("/book/edit")
 public class EditBookServlet extends HttpServlet {
@@ -22,7 +22,6 @@ public class EditBookServlet extends HttpServlet {
     public EditBookServlet() {
         super();
     }
-
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -47,7 +46,6 @@ public class EditBookServlet extends HttpServlet {
 			view = request.getRequestDispatcher("/book/list");
 			view.forward(request, response);
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
