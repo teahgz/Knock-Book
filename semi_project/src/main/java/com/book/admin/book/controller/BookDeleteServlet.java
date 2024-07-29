@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.book.admin.book.dao.BookDao;
 import com.book.admin.book.vo.Book;
 
-
+// 관리자 도서 삭제
 
 @WebServlet("/book/delete")
 public class BookDeleteServlet extends HttpServlet {
