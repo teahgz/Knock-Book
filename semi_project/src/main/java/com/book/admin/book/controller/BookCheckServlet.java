@@ -14,7 +14,7 @@ import javax.servlet.RequestDispatcher;
 import java.util.List;
 import java.util.Map;
 
-//독후감 작성 전 정보확인
+// 도서 수정 
 @WebServlet("/book/bookCheck")
 public class BookCheckServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
