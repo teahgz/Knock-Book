@@ -18,7 +18,6 @@
 - Back-end : Java
 - 버전 및 이슈관리 : Github
 - 협업 툴 : Discord, Notion, Github
-- 서비스 배포 환경 : Netlify
 - 디자인 : [Figma](https://www.figma.com/design/zs48zazKVZMuD3E8YAA9Z9/Untitled?node-id=4-1039)
 <br>
 
