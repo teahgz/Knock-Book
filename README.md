@@ -9,6 +9,7 @@
 <div align="center">
 | **김채영** | **김민재** | **박혜선** | **서혜원** |**이종담** | **전주영** |
 | :------: |  :------: | :------: | :------: |
+</div>
 <br>
 ## 1. 개발 환경
 - Front : HTML5, CSS3, JavaScript
@@ -24,25 +25,23 @@
 ├── README.md
 ├── .gitignore
 ├── public
-│    └── index.jsp
+│   └── index.jsp
 └── src.com.book
-     ├── admin
-     │     ├── book
-     │     │     ├── controller
-     │     │     │       ├── AdminApplyListServlet.java
-     │     │     │       ├── ApplyStatusEndServlet.java
-     │     │     │       ├── BookCheckServlet.java
-     │     │     │       ├── BookDeleteServlet.java
-     │     │     │       ├── BookListServlet.java
-     │     │     │       ├── CreateBookEndServlet.java
-     │     │     │       ├── CreateBookServlet.java
-     │     │     │       ├── EditBookServlet.java
-     │     │     ├── dao
-     │     │     └── vo
-     │     ├── event
-     │     └── sg
-
-```
+└── admin
+├── book
+│   ├── controller
+│   │   ├── AdminApplyListServlet.java
+│   │   ├── ApplyStatusEndServlet.java
+│   │   ├── BookCheckServlet.java
+│   │   ├── BookDeleteServlet.java
+│   │   ├── BookListServlet.java
+│   │   ├── CreateBookEndServlet.java
+│   │   ├── CreateBookServlet.java
+│   │   └── EditBookServlet.java
+│   ├── dao
+│   └── vo
+├── event
+└── sg
 <br>
 ## 3. 역할 분담
 ### 김채영
