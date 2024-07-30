@@ -72,18 +72,22 @@ body {
 }
 
 .replyList {
-    width: 100%;
-    padding: 30px;
+	    border-top: solid 1px;
+	    margin-top: 20px;
+	    margin-left: 20px;
+   		 margin-right: 20px;
+}
+
+#nickname{
+ margin-top: 10px;
 }
 
 .replyContent {
-    width: 95%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    resize: none;
-    overflow: auto;
+	width: 95%;
+	   padding: 10px;
+	   resize: none;
+	   margin-top: 10px;
+	    margin-bottom: 10px;
 }
 
 .btn_container {
@@ -164,8 +168,15 @@ body {
     <!-- 답변 -->
     <% 
     SuggestionReply sr = (SuggestionReply) request.getAttribute("sgReply");
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     if (sr != null ) {
         System.out.println("reply");%>
+        <div id="replyView">
+            <div id="nickname">
+               <span>관리자</span>
+               <span id="replyDate"><%=dtf.format(sr.getSg_reply_date()) %></span>
+            </div>
+            </div>
         <div class="replyContent"><%=sr.getSg_reply_content()%></div>
         <%  } else { %>
         <div class="replyContent">관리자가 빠른 시일 내에 답변을 드릴거에요 :)</div>
