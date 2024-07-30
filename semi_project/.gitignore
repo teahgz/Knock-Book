@@ -237,4 +237,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Ignore jquery.js
+jquery.js
+
 # End of https://www.toptal.com/developers/gitignore/api/java,windows,eclipse,intellij
+/build/
