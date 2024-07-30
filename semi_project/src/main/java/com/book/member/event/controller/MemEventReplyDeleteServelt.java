@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.book.member.event.dao.EventReplyDao;
 
+// 이벤트 댓글 삭제
+
 @WebServlet("/member/event/deleteReply")
 public class MemEventReplyDeleteServelt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
