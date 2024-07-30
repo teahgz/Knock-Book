@@ -11,6 +11,7 @@ import java.util.Map;
 import static com.book.common.sql.JDBCTemplate.getConnection;
 
 public class ApplyBookDao {
+	// 도서 조회 및 추가
     public int inputApply(ApplyBook ab){
 
         PreparedStatement pstmt = null;
@@ -18,11 +19,7 @@ public class ApplyBookDao {
         Connection conn = getConnection();
         int result = 0;
         try{
-
-
             conn.setAutoCommit(false);
-
-
             String sql = "SELECT COUNT(*) FROM book WHERE books_title =? AND books_author =? AND books_publisher_name = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, ab.getApply_bk_title());
@@ -83,6 +80,7 @@ public class ApplyBookDao {
         return result;
 
     }
+    // 도서추가 목록
     public List<Map<String, String>> selectApplyList(ApplyBook ab, String title) {
 
         List<Map<String, String>> list = new ArrayList<>();
@@ -120,10 +118,9 @@ public class ApplyBookDao {
             e.printStackTrace();
         }
 
-
         return list;
     }
-
+// 도서 추가 목록 페이징 개수
     public int selectBoardCount(ApplyBook option, String title) {
         int result = 0;
         PreparedStatement pstmt = null;
@@ -154,7 +151,7 @@ public class ApplyBookDao {
         }
         return result;
     }
-
+// 도서 추가 수정
     public int updateApplyStatus(int applyNo, int status){
         int result = 0;
         Connection conn = getConnection();
@@ -169,7 +166,6 @@ public class ApplyBookDao {
             pstmt.setInt(2, applyNo);
 
            result = pstmt.executeUpdate();
-
 
         }catch(Exception e) {
             e.printStackTrace();
