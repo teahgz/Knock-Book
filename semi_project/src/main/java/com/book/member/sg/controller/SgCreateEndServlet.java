@@ -16,6 +16,8 @@ import com.book.member.user.vo.User;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+//  사용자 문의사항 작성 
+
 @WebServlet("/member/sg/createEnd")
 public class SgCreateEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
