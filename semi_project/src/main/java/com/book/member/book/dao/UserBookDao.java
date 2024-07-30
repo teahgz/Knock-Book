@@ -11,6 +11,7 @@ import java.util.Map;
 import static com.book.common.sql.JDBCTemplate.getConnection;
 
 public class UserBookDao {
+	// 도서 조회
     public List<Map<String, String>> selectBookAll(Book b, String content){
         List<Map<String, String>> list = new ArrayList<>();
         Connection conn = getConnection();
@@ -50,7 +51,7 @@ public class UserBookDao {
         return list;
     }
 
-
+// 도서 페이징 카운트
     public int selectBoardCount(Book option, String content) {
         int result = 0;
         Connection conn = getConnection();
@@ -82,4 +83,39 @@ public class UserBookDao {
         return result;
     }
 
+    // 독후감 수정 페이지 조회
+    public List<Map<String, String>> checkInfo(String id) {
+        List<Map<String, String>> list = new ArrayList<>();
+        Connection conn = getConnection();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        int book_no = Integer.parseInt(id);
+
+        try{
+
+            String sql = "SELECT a.books_no AS 도서번호, a.books_title AS 도서이름, a.books_author AS 도서저자, a.books_publisher_name AS 출판사, a.books_img AS 도서이미지, b.book_category_name AS 카테고리 FROM book a \n" +
+                    "JOIN book_category b ON a.books_category_no = b.books_category_no WHERE a.books_no =?";
+
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1,book_no);
+            rs = pstmt.executeQuery();
+
+            while(rs.next()){
+                Map<String, String> row = new HashMap<>();
+                row.put("books_no", rs.getString("도서번호"));
+                row.put("books_title", rs.getString("도서이름"));
+                row.put("books_author", rs.getString("도서저자"));
+                row.put("books_publisher_name", rs.getString("출판사"));
+                row.put("books_img", rs.getString("도서이미지"));
+                row.put("books_category", rs.getString("카테고리"));
+
+                list.add(row);
+
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return list;
+    }
+    
 }
