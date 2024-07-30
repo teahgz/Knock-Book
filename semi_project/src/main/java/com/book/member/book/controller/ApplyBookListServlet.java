@@ -33,7 +33,6 @@ public class ApplyBookListServlet extends HttpServlet {
         if (nowPage != null) {
             ab.setNowPage(Integer.parseInt(nowPage));
         }
-        // 전체 목록 개수 -> 페이징바 구성
         ab.setTotalData(new ApplyBookDao().selectBoardCount(ab, title));
 
         List<Map<String,String>> list = new ApplyBookDao().selectApplyList(ab, title);
