@@ -16,7 +16,7 @@
       crossorigin="anonymous"/>
  </head>
 <style> 
-
+ 
 	::-webkit-scrollbar {
 		display: none;
 	} 
