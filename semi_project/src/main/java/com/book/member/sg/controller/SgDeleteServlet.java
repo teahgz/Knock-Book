@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.book.member.sg.dao.SgMemDao;
 import com.book.member.sg.vo.Suggestion;
 
-// 
+// 사용자 문의사항 삭제
 
 @WebServlet("/member/sg/delete")
 public class SgDeleteServlet extends HttpServlet {
