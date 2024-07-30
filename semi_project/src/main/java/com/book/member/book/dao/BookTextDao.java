@@ -14,7 +14,7 @@ import java.util.Map;
 import static com.book.common.sql.JDBCTemplate.getConnection;
 
 public class BookTextDao {
-
+	// 독후감 작성
     public int inputBookText(BookText bt){
         Connection conn = getConnection();
         PreparedStatement pstmt = null;
@@ -33,14 +33,12 @@ public class BookTextDao {
 
             result =pstmt.executeUpdate();
 
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
     }
-
+// 독후감 목록 조회
     public  List<Map<String, String>> selectBooktext(BookText bt, String content, String recommendation) {
 
         List<Map<String, String>> list = new ArrayList<>();
@@ -89,16 +87,15 @@ public class BookTextDao {
 
         }
 
-
     return list;
     }
+    // 임시저장된 독후감 조회
     public  List<Map<String, String>> selectSaveText(int userNo, BookText bt, String content, String recommendation) {
 
         List<Map<String, String>> list = new ArrayList<>();
         Connection conn = getConnection();
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-
 
         try{
             String sql = "SELECT a.save_no AS 저장번호, b.user_nickname AS 작성자 ,d.books_img AS 책이미지," +
@@ -117,7 +114,6 @@ public class BookTextDao {
 
             }
             sql += " LIMIT "+bt.getLimitPageNo()+", "+bt.getNumPerPage();
-
 
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1,userNo);
@@ -145,6 +141,7 @@ public class BookTextDao {
         }
         return list;
     }
+    // 독후감 상세조회
     public  List<Map<String, String>> detailBookText(int bt_no) {
 
         List<Map<String, String>> list = new ArrayList<>();
@@ -179,7 +176,6 @@ public class BookTextDao {
                 row.put("bk_cate_no",rs.getString("카테고리번호"));
                 list.add(row);
 
-
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -194,7 +190,7 @@ public class BookTextDao {
     }
     return list;
     }
-
+// 독후감 갯수 조회
     public int selectBoardCount(BookText option, String content, String recommendation) {
         int result = 0;
         Connection conn = getConnection();
@@ -229,7 +225,7 @@ public class BookTextDao {
         }
         return result;
     }
-
+// 사용자 독후감
     public  List<Map<String, String>> userBooktext(BookText bt, String content, String recommendation, int user_no) {
 
         List<Map<String, String>> list = new ArrayList<>();
@@ -247,13 +243,11 @@ public class BookTextDao {
             if(content != null) {
                 sql += " AND d.books_title LIKE CONCAT('%','"+content+"','%')";
             }
-            // 추천도가 선택된 경우 SQL에 조건을 추가합니다.
             if (recommendation != null && !recommendation.isEmpty() && !"0".equals(recommendation)) {
                 sql += " AND c.recommendation_no = '"+recommendation+"'";
 
             }
             sql += " LIMIT "+bt.getLimitPageNo()+", "+ bt.getNumPerPage();
-
 
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1,user_no);
@@ -278,9 +272,9 @@ public class BookTextDao {
             e.printStackTrace();
         }
 
-
         return list;
     }
+    // 사용자 독후감 갯수
     public int userBooktextCount(BookText option, String content, String recommendation, int user_no) {
         int result = 0;
         Connection conn = getConnection();
@@ -317,6 +311,7 @@ public class BookTextDao {
         }
         return result;
     }
+    // 임시저장 독후감 갯수
     public int saveBooktextCount(int userNo,BookText option, String content, String recommendation) {
         int result = 0;
         Connection conn = getConnection();
@@ -329,7 +324,6 @@ public class BookTextDao {
             if(content != null) {
                 sql += "AND b.books_title LIKE CONCAT('%','"+content+"','%')";
             }
-            // 추천도가 선택된 경우 SQL에 조건을 추가합니다.
             if (recommendation != null && !recommendation.isEmpty() && !"0".equals(recommendation)) {
                 sql += " AND a.recommendation_no = '"+recommendation+"'";
             }
@@ -354,6 +348,7 @@ public class BookTextDao {
         return result;
     }
 
+    // 독후감 수정
     public int updateInfo(BookText bt) {
 
         int result = 0;
@@ -371,7 +366,6 @@ public class BookTextDao {
             pstmt.setInt(5, bt.getBooktext_no());
             result= pstmt.executeUpdate();
 
-
         }catch(Exception e) {
             e.printStackTrace();
         }finally {
@@ -385,14 +379,13 @@ public class BookTextDao {
         return result;
 
     }
-
+// 독후감 수정 조회
     public List<Map<String, String>> checkInfo(String id){
 
         List<Map<String, String>> list = new ArrayList<>();
         Connection conn = getConnection();
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-
 
         try{
             String sql = "SELECT a.book_first_read AS 읽기시작, a.booktext_no AS 독후감번호, " +
@@ -434,9 +427,9 @@ public class BookTextDao {
             e.printStackTrace();
         }
 
-
         return list;
     }
+    // 독후감 삭제
     public int deleteBooktext(String bt_no){
         int booktext_no = Integer.parseInt(bt_no);
         int result = 0;
@@ -454,7 +447,7 @@ public class BookTextDao {
         }
         return result;
     }
-
+// 임시저장 작성
     public int inputSaveBookText(BookText bt) {
         Connection conn = getConnection();
         PreparedStatement pstmt = null;
@@ -473,21 +466,18 @@ public class BookTextDao {
 
             result =pstmt.executeUpdate();
 
-
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
     }
+    // 임시저장 조회
     public List<Map<String, String>> checkSave(String no){
 
         List<Map<String, String>> list = new ArrayList<>();
         Connection conn = getConnection();
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-
 
         try{
             String sql = "SELECT a.user_no AS 사용자번호, a.books_no AS 도서번호, a.save_first_read AS 읽기시작, a.save_no AS 저장번호, " +
@@ -530,9 +520,9 @@ public class BookTextDao {
             e.printStackTrace();
         }
 
-
         return list;
     }
+    // 임시저장 수정
     public int updateSaveInfo(int save_no ,BookText bt) {
         int result = 0;
         Connection conn = getConnection();
@@ -549,7 +539,6 @@ public class BookTextDao {
             pstmt.setInt(5, save_no);
             result = pstmt.executeUpdate();
 
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -562,6 +551,7 @@ public class BookTextDao {
         }
         return result;
     }
+    // 임시저장 삭제
     public int deleteSaveInfo(int saveNo){
         int result = 0;
         Connection conn = getConnection();
